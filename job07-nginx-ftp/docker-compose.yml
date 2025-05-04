@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - webdata:/usr/share/nginx/html
+
+  ftp:
+    image: stilliard/pure-ftpd
+    ports:
+      - "2121:21"
+      - "30000-30009:30000-30009"
+    environment:
+      FTP_USER_NAME: user
+      FTP_USER_PASS: user123
+      FTP_USER_HOME: /home/ftpusers/user
+      ADDED_FLAGS: "--passiveportrange 30000:30009"
+      PUBLICHOST: 192.168.234.130
+    volumes:
+      - webdata:/home/ftpusers/user
+
+volumes:
+  webdata:

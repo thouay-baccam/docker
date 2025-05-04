@@ -1,0 +1,15 @@
+version: 0.1
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :5000
+  headers:
+    Access-Control-Allow-Origin:
+      - http://192.168.234.130:8081
+    Access-Control-Allow-Methods:
+      - GET
+      - HEAD
+      - OPTIONS
+    Access-Control-Allow-Headers:
+      - Authorization
